@@ -1,0 +1,32 @@
+.movie-item {
+  height: 30px;
+  width: 250px;
+  line-height: 30px;
+  text-align: center;
+  margin-bottom: 16px;
+  background: #00c3ff;
+}
+
+.movie-add-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+}
+
+.movie-label {
+
+}
+
+.movie-input {
+
+}
+
+.movie-select {
+
+}
+
+.movie-button {
+
+}
