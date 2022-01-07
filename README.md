@@ -1,0 +1,1 @@
+Simple app React && graphQL foloow by udemy course https://www.udemy.com/course/graphql-with-react-build-real-world-graphql-projects/
