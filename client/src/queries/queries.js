@@ -20,16 +20,6 @@ export const GET_DIRECTORS_QUERY = gql`
   }
 `;
 
-export const ADD_MOVIE_MUTATION = gql`
-  mutation($name: String!, $genre: String!, $directorId: ID!){
-    addMovie(name: $name, genre: $genre, directorId: $directorId) {
-      name
-      genre
-      id
-    }
-  }
-`;
-
 export const GET_MOVIE_QUERY = gql`
   query($id: ID!){
     movie(id: $id){
@@ -46,5 +36,21 @@ export const GET_MOVIE_QUERY = gql`
         }
       }
     }
+  }
+`;
+
+export const ADD_MOVIE_MUTATION = gql`
+  mutation($name: String!, $genre: String!, $directorId: ID!){
+    addMovie(name: $name, genre: $genre, directorId: $directorId) {
+      name
+      genre
+      id
+    }
+  }
+`;
+
+export const DELETE_MOVIE_MUTATION = gql`
+  mutation($id: ID!){
+    deleteMovie(id: $id)
   }
 `;

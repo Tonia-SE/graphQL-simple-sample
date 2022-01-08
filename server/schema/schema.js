@@ -21,10 +21,6 @@ const MovieType = new GraphQLObjectType({
       type: DirectorType,
       resolve(parent, args) {
         return Director.findById(parent.directorId);
-
-        
-        // get data from database
-        // return directors.find((el) => el.id === parent.directorId);
       }
     },
   })
@@ -40,7 +36,6 @@ const DirectorType = new GraphQLObjectType({
       type: new GraphQLList(MovieType),
       resolve(parent, args) {
         return Movie.find({ directorId: parent.id });
-        // return movies.filter((el) => el.directorId === parent.id);
       }
     },
   })
@@ -54,8 +49,6 @@ const RootQuery = new GraphQLObjectType({
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         return Movie.findById(args.id);
-        // get data from database
-        // return movies.find((el) => el.id === args.id);
       },
     },
     director: {
@@ -63,24 +56,18 @@ const RootQuery = new GraphQLObjectType({
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         return Director.findById(args.id);
-        // get data from database
-        // return directors.find((el) => el.id === args.id);
       },
     },
     movies: {
       type: new GraphQLList(MovieType),
       resolve(parent, args) {
         return Movie.find({});
-        // get data from database
-        // return movies;
       },
     },
     directors: {
       type: new GraphQLList(DirectorType),
       resolve(parent, args) {
         return Director.find({});
-        // get data from database
-        // return directors;
       },
     }
   })
@@ -118,7 +105,16 @@ const Mutation = new GraphQLObjectType({
         });
         return movie.save();
       }
-    }
+    },
+    deleteMovie: {
+      type: GraphQLID,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return Movie.deleteOne({_id: args.id}).then(() => args.id);
+      }
+    },
   }
 })
 
